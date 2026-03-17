@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyman Dunford Portfolio — 27-Unit Multifamily Collection</title>
+    <meta property="og:title" content="Wyman Dunford Portfolio — 27-Unit Multifamily Collection">
+    <meta property="og:description" content="4-property, 27-unit multifamily portfolio in North Hollywood & Van Nuys. Total list price: $8,795,000.">
+    <meta property="og:image" content="images/hero.jpg">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1B3A5C;
+            --navy-dark: #142C47;
+            --gold: #C5A258;
+            --gold-light: #D4B76A;
+            --text: #2D2D2D;
+            --text-light: #5A5A5A;
+            --bg: #FAFAFA;
+            --white: #FFFFFF;
+            --border: #E2E2E2;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Cover Section ── */
+        .cover {
+            position: relative;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background: url('images/hero.jpg') center/cover no-repeat;
+            overflow: hidden;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(20,44,71,0.82) 0%, rgba(27,58,92,0.90) 100%);
+        }
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            padding: 60px 24px;
+            max-width: 800px;
+        }
+        .cover-logo {
+            height: 60px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+        .cover-title {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+        .cover-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .cover-client {
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 36px;
+            display: none;
+        }
+        .cover-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .cover-stat {
+            text-align: center;
+        }
+        .cover-stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            display: block;
+        }
+        .cover-stat-label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-top: 4px;
+        }
+
+        /* ── Sections ── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        section {
+            padding: 56px 0;
+        }
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 48px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* ── Portfolio Overview ── */
+        .overview p {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            max-width: 900px;
+        }
+
+        /* ── Summary Table ── */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            background: var(--white);
+        }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .summary-table thead {
+            background: var(--navy);
+            color: var(--white);
+        }
+        .summary-table th {
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .summary-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .summary-table tbody tr.clickable {
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .summary-table tbody tr.clickable:hover {
+            background: #F0F4F8;
+        }
+        .summary-table tbody tr.clickable td:first-child {
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .summary-table tbody tr.total-row {
+            background: #F5F5F5;
+            font-weight: 700;
+        }
+        .summary-table .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .tag-yes { background: #E8F5E9; color: #2E7D32; }
+        .tag-no { background: #F5F5F5; color: #999; }
+
+        /* ── Property Cards ── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .prop-card {
+            background: var(--white);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+            padding: 28px 28px 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            transition: box-shadow 0.2s;
+        }
+        .prop-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        }
+        .prop-card-address {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .prop-card-city {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+        .prop-card-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+            margin-bottom: 20px;
+        }
+        .prop-card-stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .prop-card-stat-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .prop-card-range {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            padding: 10px 14px;
+            background: #F7F8FA;
+            border-radius: 6px;
+        }
+        .prop-card-range strong {
+            color: var(--text);
+        }
+        .prop-card-link {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .prop-card-link:hover {
+            color: var(--navy);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--navy-dark);
+            color: var(--white);
+            padding: 56px 0 32px;
+        }
+        .footer .section-title {
+            color: var(--white);
+        }
+        .footer .section-title::after {
+            background: var(--gold);
+        }
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .agent-card {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .agent-photo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+            flex-shrink: 0;
+        }
+        .agent-info {
+            min-width: 0;
+        }
+        .agent-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .agent-title {
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .agent-detail {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+        .agent-detail a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+        .agent-detail a:hover {
+            color: var(--gold);
+        }
+
+        /* ── Disclaimer ── */
+        .disclaimer {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.45);
+            max-width: 700px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            line-height: 1.7;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .cover { min-height: 460px; }
+            .cover-title { font-size: 30px; }
+            .cover-stats { gap: 24px; }
+            .cover-stat-value { font-size: 22px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .agents-grid { grid-template-columns: 1fr; }
+            .summary-table { font-size: 13px; }
+            .summary-table th, .summary-table td { padding: 10px 12px; }
+        }
+
+        /* ── Print ── */
+        @media print {
+            body { background: white; }
+            .cover { min-height: auto; padding: 40px 0; break-after: page; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover::before { background: var(--navy) !important; }
+            section { padding: 32px 0; }
+            .prop-card { break-inside: avoid; }
+            .footer { break-before: page; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════ COVER ════════ -->
+<header class="cover">
+    <div class="cover-content">
+        <img src="images/LAAA_Team_White.png" alt="LAAA Team" class="cover-logo">
+        <h1 class="cover-title">Wyman Dunford Portfolio</h1>
+        <p class="cover-subtitle">27-Unit Multifamily Portfolio | North Hollywood &amp; Van Nuys</p>
+        <p class="cover-client" id="clientLine"></p>
+        <div class="cover-stats">
+            <div class="cover-stat">
+                <span class="cover-stat-value">4</span>
+                <span class="cover-stat-label">Properties</span>
+            </div>
+            <div class="cover-stat">
+                <span class="cover-stat-value">27</span>
+                <span class="cover-stat-label">Units</span>
+            </div>
+            <div class="cover-stat">
+                <span class="cover-stat-value">$8,795,000</span>
+                <span class="cover-stat-label">Total Value</span>
+            </div>
+            <div class="cover-stat">
+                <span class="cover-stat-value">5.38%</span>
+                <span class="cover-stat-label">Blended Cap</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ════════ OVERVIEW ════════ -->
+<section class="overview">
+    <div class="container">
+        <h2 class="section-title">Portfolio Overview</h2>
+        <p>The LAAA Team is proud to present the Wyman Dunford Portfolio — a 27-unit, four-property multifamily collection spanning North Hollywood and Van Nuys in the San Fernando Valley. The portfolio comprises assets built between 2005 and 2020, offering buyers a diversified mix of vintage, unit count, and regulatory profiles across two of the Valley's most active apartment submarkets.</p>
+        <p>Offered as individual assets rather than a package, the portfolio allows buyers to acquire one, several, or all four properties based on their investment criteria. Each property carries its own pricing, underwriting, and comp support. Three of the four properties sit within designated Opportunity Zones, contributing to increased neighborhood investment and development activity in these corridors.</p>
+    </div>
+</section>
+
+<!-- ════════ SUMMARY TABLE ════════ -->
+<section style="padding-top: 0;">
+    <div class="container">
+        <h2 class="section-title">Portfolio Summary</h2>
+        <div class="table-wrap">
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>City</th>
+                        <th>Units</th>
+                        <th>Year Built</th>
+                        <th>List Price</th>
+                        <th>$/Unit</th>
+                        <th>RSO</th>
+                        <th>OZ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable" onclick="window.open('https://12040-dehougne.laaa.com/?client=Wyman+Dunford','_blank')">
+                        <td>12040 Dehougne St</td>
+                        <td>North Hollywood</td>
+                        <td>5</td>
+                        <td>2005</td>
+                        <td>$1,400,000</td>
+                        <td>$280,000</td>
+                        <td><span class="tag tag-no">No</span></td>
+                        <td><span class="tag tag-no">No</span></td>
+                    </tr>
+                    <tr class="clickable" onclick="window.open('https://6656-lemp.laaa.com/?client=Wyman+Dunford','_blank')">
+                        <td>6656 Lemp Ave</td>
+                        <td>North Hollywood</td>
+                        <td>5</td>
+                        <td>2010</td>
+                        <td>$1,500,000</td>
+                        <td>$300,000</td>
+                        <td><span class="tag tag-yes">Yes</span></td>
+                        <td><span class="tag tag-yes">Yes</span></td>
+                    </tr>
+                    <tr class="clickable" onclick="window.open('https://6842-morella.laaa.com/?client=Wyman+Dunford','_blank')">
+                        <td>6842 Morella Ave</td>
+                        <td>North Hollywood</td>
+                        <td>6</td>
+                        <td>2007</td>
+                        <td>$1,795,000</td>
+                        <td>$299,167</td>
+                        <td><span class="tag tag-yes">Yes</span></td>
+                        <td><span class="tag tag-yes">Yes</span></td>
+                    </tr>
+                    <tr class="clickable" onclick="window.open('https://6718-sylmar.laaa.com/?client=Wyman+Dunford','_blank')">
+                        <td>6718 Sylmar Ave</td>
+                        <td>Van Nuys</td>
+                        <td>11</td>
+                        <td>2020</td>
+                        <td>$4,100,000</td>
+                        <td>$372,727</td>
+                        <td><span class="tag tag-no">No</span></td>
+                        <td><span class="tag tag-yes">Yes</span></td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Portfolio Total</strong></td>
+                        <td></td>
+                        <td><strong>27</strong></td>
+                        <td></td>
+                        <td><strong>$8,795,000</strong></td>
+                        <td><strong>$325,741</strong></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ PROPERTY CARDS ════════ -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Individual Property Profiles</h2>
+        <div class="cards-grid">
+
+            <!-- Dehougne -->
+            <div class="prop-card">
+                <div class="prop-card-address">12040 Dehougne St</div>
+                <div class="prop-card-city">North Hollywood, CA</div>
+                <div class="prop-card-stats">
+                    <div>
+                        <div class="prop-card-stat-label">Units</div>
+                        <div class="prop-card-stat-value">5</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">Year Built</div>
+                        <div class="prop-card-stat-value">2005</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">List Price</div>
+                        <div class="prop-card-stat-value">$1,400,000</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">Cap Rate</div>
+                        <div class="prop-card-stat-value">5.61%</div>
+                    </div>
+                </div>
+                <div class="prop-card-range"><strong>Trade Range:</strong> $1,300,000 — $1,500,000</div>
+                <a href="https://12040-dehougne.laaa.com/?client=Wyman+Dunford" target="_blank" class="prop-card-link">View Full BOV &rarr;</a>
+            </div>
+
+            <!-- Lemp -->
+            <div class="prop-card">
+                <div class="prop-card-address">6656 Lemp Ave</div>
+                <div class="prop-card-city">North Hollywood, CA</div>
+                <div class="prop-card-stats">
+                    <div>
+                        <div class="prop-card-stat-label">Units</div>
+                        <div class="prop-card-stat-value">5</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">Year Built</div>
+                        <div class="prop-card-stat-value">2010</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">List Price</div>
+                        <div class="prop-card-stat-value">$1,500,000</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">Cap Rate</div>
+                        <div class="prop-card-stat-value">5.08%</div>
+                    </div>
+                </div>
+                <div class="prop-card-range"><strong>Trade Range:</strong> $1,375,000 — $1,500,000</div>
+                <a href="https://6656-lemp.laaa.com/?client=Wyman+Dunford" target="_blank" class="prop-card-link">View Full BOV &rarr;</a>
+            </div>
+
+            <!-- Morella -->
+            <div class="prop-card">
+                <div class="prop-card-address">6842 Morella Ave</div>
+                <div class="prop-card-city">North Hollywood, CA</div>
+                <div class="prop-card-stats">
+                    <div>
+                        <div class="prop-card-stat-label">Units</div>
+                        <div class="prop-card-stat-value">6</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">Year Built</div>
+                        <div class="prop-card-stat-value">2007</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">List Price</div>
+                        <div class="prop-card-stat-value">$1,795,000</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">Cap Rate</div>
+                        <div class="prop-card-stat-value">5.64%</div>
+                    </div>
+                </div>
+                <div class="prop-card-range"><strong>Trade Range:</strong> $1,650,000 — $1,850,000</div>
+                <a href="https://6842-morella.laaa.com/?client=Wyman+Dunford" target="_blank" class="prop-card-link">View Full BOV &rarr;</a>
+            </div>
+
+            <!-- Sylmar -->
+            <div class="prop-card">
+                <div class="prop-card-address">6718 Sylmar Ave</div>
+                <div class="prop-card-city">Van Nuys, CA</div>
+                <div class="prop-card-stats">
+                    <div>
+                        <div class="prop-card-stat-label">Units</div>
+                        <div class="prop-card-stat-value">11</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">Year Built</div>
+                        <div class="prop-card-stat-value">2020</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">List Price</div>
+                        <div class="prop-card-stat-value">$4,100,000</div>
+                    </div>
+                    <div>
+                        <div class="prop-card-stat-label">Cap Rate</div>
+                        <div class="prop-card-stat-value">5.29%</div>
+                    </div>
+                </div>
+                <div class="prop-card-range"><strong>Trade Range:</strong> $3,800,000 — $4,100,000</div>
+                <a href="https://6718-sylmar.laaa.com/?client=Wyman+Dunford" target="_blank" class="prop-card-link">View Full BOV &rarr;</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer class="footer">
+    <div class="container">
+        <h2 class="section-title">Your Advisory Team</h2>
+        <div class="agents-grid">
+
+            <div class="agent-card">
+                <img src="images/Glen_Scher.png" alt="Glen Scher" class="agent-photo">
+                <div class="agent-info">
+                    <div class="agent-name">Glen Scher</div>
+                    <div class="agent-title">Senior Managing Director Investments</div>
+                    <div class="agent-detail">
+                        <a href="tel:+18182122808">(818) 212-2808</a><br>
+                        <a href="mailto:Glen.Scher@marcusmillichap.com">Glen.Scher@marcusmillichap.com</a><br>
+                        License: 01962976
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <img src="images/Filip_Niculete.png" alt="Filip Niculete" class="agent-photo">
+                <div class="agent-info">
+                    <div class="agent-name">Filip Niculete</div>
+                    <div class="agent-title">Senior Vice President Investments</div>
+                    <div class="agent-detail">
+                        <a href="tel:+18182122812">(818) 212-2812</a><br>
+                        <a href="mailto:Filip.Niculete@marcusmillichap.com">Filip.Niculete@marcusmillichap.com</a><br>
+                        License: 01996429
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <img src="images/Morgan_Wetmore.png" alt="Morgan Wetmore" class="agent-photo">
+                <div class="agent-info">
+                    <div class="agent-name">Morgan Wetmore</div>
+                    <div class="agent-title">Associate</div>
+                    <div class="agent-detail">
+                        <a href="tel:+18182122721">(818) 212-2721</a><br>
+                        <a href="mailto:Morgan.Wetmore@marcusmillichap.com">Morgan.Wetmore@marcusmillichap.com</a><br>
+                        License: 02243498
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="disclaimer">This Broker's Opinion of Value is prepared for the exclusive use of the intended recipient. The information contained herein is based on sources deemed reliable but is not guaranteed. Marcus &amp; Millichap Real Estate Investment Services.</p>
+    </div>
+</footer>
+
+<!-- ════════ CLIENT PERSONALIZATION ════════ -->
+<script>
+    (function() {
+        var params = new URLSearchParams(window.location.search);
+        var client = params.get('client');
+        if (client) {
+            var el = document.getElementById('clientLine');
+            el.textContent = 'Prepared for ' + client;
+            el.style.display = 'block';
+        }
+    })();
+</script>
+
+</body>
+</html>
